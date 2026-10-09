@@ -1,0 +1,4 @@
+timestamp,agent.name,rule.description,rule.level,rule.id
+"Oct 9, 2026 @ 15:10:08.341","soclabs-windows","Possible brute force: 5+ failed Windows logons (4625) from same source IP within 60s","12","100100"
+"Oct 9, 2026 @ 15:09:58.262","soclabs-windows","Possible brute force: 5+ failed Windows logons (4625) from same source IP within 60s","12","100100"
+"Oct 9, 2026 @ 15:09:06.234","soclabs-windows","Possible brute force: 5+ failed Windows logons (4625) from same source IP within 60s","12","100100"

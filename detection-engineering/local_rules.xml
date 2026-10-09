@@ -1,0 +1,11 @@
+<group name="windows,authentication_failures,custom,">
+  <rule id="100100" level="12" frequency="5" timeframe="60">
+    <if_matched_sid>60122</if_matched_sid>
+    <same_field>win.eventdata.ipAddress</same_field>
+    <description>Possible brute force: 5+ failed Windows logons (4625) from same source IP within 60s</description>
+    <mitre>
+      <id>T1110.001</id>
+    </mitre>
+    <group>authentication_failures,</group>
+  </rule>
+</group>

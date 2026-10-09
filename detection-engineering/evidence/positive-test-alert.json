@@ -1,0 +1,86 @@
+{
+  "_index": "wazuh-alerts-4.x-2026.10.09",
+  "_id": "evcIIKEBMpBbt9qHzS3L",
+  "_score": null,
+  "_source": {
+    "input": {
+      "type": "log"
+    },
+    "agent": {
+      "ip": "172.16.62.134",
+      "name": "soclabs-windows",
+      "id": "002"
+    },
+    "manager": {
+      "name": "wazuh.manager"
+    },
+    "data": {
+      "win": {
+        "eventdata": {
+          "subjectLogonId": "0x0",
+          "ipAddress": "172.16.62.132",
+          "authenticationPackageName": "NTLM",
+          "subStatus": "0xc0000064",
+          "logonProcessName": "NtLmSsp",
+          "targetUserName": "hawk",
+          "keyLength": "0",
+          "subjectUserSid": "S-1-0-0",
+          "processId": "0x0",
+          "ipPort": "53842",
+          "failureReason": "%%2313",
+          "targetDomainName": "HAWK",
+          "targetUserSid": "S-1-0-0",
+          "logonType": "3",
+          "status": "0xc000006d"
+        },
+        "system": {
+          "eventID": "4625",
+          "keywords": "0x8010000000000000",
+          "providerGuid": "{54849625-5478-4994-a5ba-3e3b0328c30d}",
+          "level": "0",
+          "channel": "Security",
+          "opcode": "0",
+          "message": "An account failed to log on. Logon Type: 3. Account: hawk. Failure Reason: Unknown user name or bad password. Source Network Address: 172.16.62.132, Source Port: 53842.",
+          "version": "0",
+          "systemTime": "2026-10-09T09:40:07.3176913Z",
+          "eventRecordID": "14256",
+          "threadID": "4436",
+          "computer": "HAWK",
+          "task": "12544",
+          "processID": "844",
+          "severityValue": "AUDIT_FAILURE",
+          "providerName": "Microsoft-Windows-Security-Auditing"
+        }
+      }
+    },
+    "rule": {
+      "firedtimes": 3,
+      "mail": true,
+      "level": 12,
+      "description": "Possible brute force: 5+ failed Windows logons (4625) from same source IP within 60s",
+      "groups": [
+        "windows",
+        "authentication_failures",
+        "custom",
+        "authentication_failures"
+      ],
+      "mitre": {
+        "technique": ["Password Guessing"],
+        "id": ["T1110.001"],
+        "tactic": ["Credential Access"]
+      },
+      "id": "100100",
+      "frequency": 5
+    },
+    "location": "EventChannel",
+    "decoder": {
+      "name": "windows_eventchannel"
+    },
+    "id": "1791538808.4101486",
+    "timestamp": "2026-10-09T09:40:08.341+0000"
+  },
+  "fields": {
+    "timestamp": ["2026-10-09T09:40:08.341Z"]
+  },
+  "sort": [1791538808341]
+}
